@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}Quill Audio{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="{% url 'home' %}" class="logo-link">
+        <img src="{% static 'images/quill-wave-transparent.png' %}" alt="Quill Audio">
+      </a>
+      <div class="nav-dropdowns">
+        <div class="dropdown">
+          <button class="dropbtn">Shop by Mood ▾</button>
+          <div class="dropdown-content">
+            <a href="{% url 'shop_by_mood' 'happy' %}">Happy</a>
+            <a href="{% url 'shop_by_mood' 'melancholic' %}">Melancholic</a>
+            <a href="{% url 'shop_by_mood' 'energetic' %}">Energetic</a>
+            <a href="{% url 'shop_by_mood' 'chill' %}">Chill</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">Shop by Genre ▾</button>
+          <div class="dropdown-content">
+            <a href="{% url 'shop_by_genre' 'pop' %}">Pop</a>
+            <a href="{% url 'shop_by_genre' 'rnb' %}">R&amp;B</a>
+            <a href="{% url 'shop_by_genre' 'hiphop' %}">Hip‑Hop</a>
+            <a href="{% url 'shop_by_genre' 'ambient' %}">Ambient</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-icons">
+        <a href="{% url 'account' %}" class="icon-btn" title="Log in / Sign up">
+          <img src="{% static 'icons/user.svg' %}" alt="Account">
+        </a>
+        <a href="{% url 'cart' %}" class="icon-btn" title="Your cart">
+          <img src="{% static 'icons/cart.svg' %}" alt="Cart">
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="content">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

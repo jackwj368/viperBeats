@@ -1,0 +1,115 @@
+:root {
+  --plum:       #3E2C41;
+  --mauve:      #B76E79;
+  --slate:      #44546A;
+  --ivory:      #F0EDE5;
+  --charcoal:   #333333;
+}
+
+/* Reset & base */
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Lora', serif;
+  background: var(--ivory);
+  color: var(--charcoal);
+}
+
+/* —— HEADER NAV —— */
+.site-header {
+  background: var(--ivory);
+  border-bottom: 1px solid var(--slate);
+}
+.nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+}
+.logo-link img {
+  height: 48px;
+}
+
+/* Dropdowns */
+.nav-dropdowns {
+  display: flex;
+  gap: 1.5rem;
+  flex-grow: 1;
+}
+.dropdown {
+  position: relative;
+}
+.dropbtn {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--charcoal);
+  cursor: pointer;
+  padding: 0.25rem 0;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; left: 0;
+  background: var(--ivory);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border: 1px solid var(--slate);
+  border-radius: 4px;
+}
+.dropdown-content a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--charcoal);
+  text-decoration: none;
+}
+.dropdown-content a:hover {
+  background: var(--mauve);
+  color: white;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Icons */
+.nav-icons {
+  display: flex;
+  gap: 1rem;
+}
+.icon-btn img {
+  width: 24px;
+  height: 24px;
+  filter: invert(15%) sepia(0%) saturate(0%) hue-rotate(200deg)
+          brightness(80%) contrast(85%);
+}
+
+/* —— HERO SECTION —— */
+.hero-artistic {
+  max-width: 800px;
+  margin: 4rem auto;
+  text-align: center;
+  padding: 0 1rem;
+}
+.hero-artistic h1 {
+  font-size: 2.5rem;
+  color: var(--plum);
+  margin-bottom: 1rem;
+}
+.hero-artistic p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--charcoal);
+}
+.btn.favorites-btn {
+  background: var(--mauve);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+.btn.favorites-btn:hover {
+  background: var(--slate);
+}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Home • Quill Audio{% endblock %}
+
+{% block content %}
+<section class="hero-artistic">
+  <h1>Crafted Sound for the Discerning Songwriter</h1>
+  <p>Click below for a selection of refined beats, crafted with intent and built to last beyond trends.</p>
+  <a href="{% url 'favorites' %}" class="btn favorites-btn">Shop Favorites</a>
+</section>
+{% endblock %}
