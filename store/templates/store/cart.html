@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Your Cart • Quill Audio{% endblock %}
+
+{% block content %}
+<section class="cart-page">
+  <h1>Your Shopping Cart</h1>
+  <p>This is where we’ll list the beats you’ve added. 🛒</p>
+    {# Example stub:
+  {% if items %}
+    <ul>
+      {% for item in items %}
+        <li>{{ item.product.title }} – ${{ item.price }}</li>
+      {% endfor %}
+    </ul>
+    <p>Total: ${{ total }}</p>
+  {% else %}
+    <p>Your cart is empty.</p>
+  {% endif %}
+    #}
+</section>
+{% endblock %}

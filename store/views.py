@@ -39,3 +39,14 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', { 'form': form })
+
+def cart(request):
+    """
+    TODO: replace with real Cart logic:
+      - pull cart items from session or DB
+      - calculate totals, etc.
+    """
+    return render(request, 'store/cart.html', {
+        # 'items': items,
+        # 'total': total,
+    })
