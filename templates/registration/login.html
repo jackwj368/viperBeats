@@ -1,0 +1,23 @@
+{# templates/registration/login.html #}
+{% extends "base.html" %}
+{% block title %}Log In &bull; Quill Audio{% endblock %}
+
+{% block content %}
+<section class="login-page">
+  <h1>Log In</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div>
+      <label for="id_username">Username:</label>
+      {{ form.username }}
+    </div>
+    <div>
+      <label for="id_password">Password:</label>
+      {{ form.password }}
+    </div>
+    <button type="submit" class="btn">Log In</button>
+  </form>
+  <p>Don’t have an account? <a href="{% url 'signup' %}">Sign up here</a>.</p>
+</section>
+{% endblock %}
