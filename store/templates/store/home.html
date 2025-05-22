@@ -2,9 +2,25 @@
 {% block title %}Home • Quill Audio{% endblock %}
 
 {% block content %}
-<section class="hero-artistic">
-  <h1>Crafted Sound for the Discerning Songwriter</h1>
-  <p>Click below for a selection of refined beats, crafted with intent and built to last beyond trends.</p>
-  <a href="{% url 'favorites' %}" class="btn favorites-btn">Shop Favorites</a>
+<section class="hero-artistic" data-aos="fade-in">
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <h1>Crafted Sound for the Discerning Songwriter</h1>
+    <p class="subhead">"Click below for a selection of refined beats, crafted with intent and built to last beyond trends."</p>
+    <a href="{% url 'favorites' %}" class="btn favorites-btn">Shop Favorites</a>
+  </div>
+</section>
+
+<section class="featured-packs" data-aos="fade-up">
+  <h2>Featured Packs</h2>
+  <div class="packs-grid">
+    {% for pack in featured_packs %}
+    <div class="pack-card" data-audio="{{ pack.preview_url }}">
+      <img src="{{ pack.thumbnail_url }}" alt="{{ pack.title }}">
+      <h3>{{ pack.title }}</h3>
+      <button class="play-btn">▶️ Preview</button>
+    </div>
+    {% endfor %}
+  </div>
 </section>
 {% endblock %}

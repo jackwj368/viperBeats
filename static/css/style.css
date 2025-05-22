@@ -63,36 +63,69 @@ body {
   filter: brightness(0) saturate(100%) invert(13%) sepia(0%) hue-rotate(182deg) brightness(94%) contrast(86%);
 }
 
-/* —— HERO WITH ARTISTIC FLARE —— */
+/* Hero */
 .hero-artistic {
   position: relative;
-  height: 70vh;
-  background: url("{% static 'images/quill-wave-transparent.png' %}") center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 75vh;
+  background: url("/static/images/shimmy.jpg") center/cover no-repeat;
+  display: flex; align-items: center; justify-content: center;
 }
 .hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(62,44,65, .6); /* plum at 60% */
+  position: absolute; inset: 0;
+  background: rgba(62,44,65,0.7);
 }
 .hero-inner {
-  position: relative;
-  text-align: center;
-  color: var(--ivory);
-  padding: 0 1rem;
+  position: relative; text-align: center; color: var(--ivory); padding: 2rem;
 }
 .hero-inner h1 {
-  font-size: 3.2rem;
-  line-height: 1.2;
-  margin-bottom: .75rem;
-  letter-spacing: .5px;
+  font-size: 4rem; letter-spacing: 1px; margin-bottom: .5rem;
 }
-.hero-inner p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+.hero-inner .subhead {
+  font-family: 'Special Elite', monospace; font-size: 1.3rem; margin-bottom: 1.5rem;
+  opacity: 0.9;
 }
+
+/* Featured Packs */
+.featured-packs {
+  max-width: 1100px; margin: 4rem auto; padding: 0 1rem; text-align: center;
+}
+.featured-packs h2 {
+  font-size: 2rem; color: var(--plum); margin-bottom: 2rem;
+}
+.packs-grid {
+  display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  gap: 2rem;
+}
+.pack-card {
+  background: var(--ivory); border: 1px solid var(--slate); border-radius: 8px;
+  padding: 1rem; position: relative; overflow: hidden;
+  transition: transform .2s ease;
+}
+.pack-card:hover { transform: translateY(-5px); }
+.pack-card img { width: 100%; border-radius: 4px; }
+.pack-card h3 { margin: .75rem 0; font-family: 'Lora', serif; }
+.play-btn {
+  background: var(--mauve); color: white; border: none; border-radius: 50%;
+  width: 40px; height: 40px; font-size: 1.1rem; cursor: pointer;
+  position: absolute; bottom: 1rem; right: 1rem;
+  transition: transform .2s ease;
+}
+.play-btn:hover { transform: scale(1.1); }
+
+/* Micro-interactions */
+@keyframes pulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.05);} }
+.btn:hover { animation: pulse .4s ease-in-out; background: var(--slate); }
+
+/* Dropdown arrow rotate */
+.dropbtn::after { content: "▾"; display:inline-block; margin-left:.3em; transition:transform .2s; }
+.dropdown:hover .dropbtn::after { transform:rotate(180deg); }
+
+/* Logo pulse */
+.logo-link:hover img { animation: pulse .6s ease-in-out; }
+
+/* AOS defaults */
+[data-aos] { opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s; }
+[data-aos].aos-animate { opacity: 1; transform: none; }
 .btn.favorites-btn {
   background: var(--mauve);
   padding: .85rem 2rem;
