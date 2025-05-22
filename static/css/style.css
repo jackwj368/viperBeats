@@ -18,6 +18,7 @@ body {
 .site-header {
   background: var(--ivory);
   border-bottom: 1px solid var(--slate);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 .nav {
   max-width: 1100px;
@@ -34,82 +35,72 @@ body {
 /* Dropdowns */
 .nav-dropdowns {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   flex-grow: 1;
-}
-.dropdown {
-  position: relative;
+  justify-content: center;
 }
 .dropbtn {
-  background: none;
-  border: none;
-  font-family: inherit;
+  font-family: 'Lora', serif;
   font-size: 1rem;
   color: var(--charcoal);
+  background: none;
+  border: none;
   cursor: pointer;
-  padding: 0.25rem 0;
 }
 .dropdown-content {
-  display: none;
-  position: absolute;
   top: 100%; left: 0;
-  background: var(--ivory);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border: 1px solid var(--slate);
-  border-radius: 4px;
-}
-.dropdown-content a {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: var(--charcoal);
-  text-decoration: none;
-}
-.dropdown-content a:hover {
-  background: var(--mauve);
-  color: white;
-}
-.dropdown:hover .dropdown-content {
-  display: block;
+  min-width: 160px;
 }
 
-/* Icons */
-.nav-icons {
+/* right-side icons */
+.nav-actions {
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 .icon-btn img {
-  width: 24px;
-  height: 24px;
-  filter: invert(15%) sepia(0%) saturate(0%) hue-rotate(200deg)
-          brightness(80%) contrast(85%);
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) saturate(100%) invert(13%) sepia(0%) hue-rotate(182deg) brightness(94%) contrast(86%);
 }
 
-/* —— HERO SECTION —— */
+/* —— HERO WITH ARTISTIC FLARE —— */
 .hero-artistic {
-  max-width: 800px;
-  margin: 4rem auto;
+  position: relative;
+  height: 70vh;
+  background: url("{% static 'images/quill-wave-transparent.png' %}") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(62,44,65, .6); /* plum at 60% */
+}
+.hero-inner {
+  position: relative;
   text-align: center;
+  color: var(--ivory);
   padding: 0 1rem;
 }
-.hero-artistic h1 {
-  font-size: 2.5rem;
-  color: var(--plum);
-  margin-bottom: 1rem;
+.hero-inner h1 {
+  font-size: 3.2rem;
+  line-height: 1.2;
+  margin-bottom: .75rem;
+  letter-spacing: .5px;
 }
-.hero-artistic p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  color: var(--charcoal);
+.hero-inner p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 .btn.favorites-btn {
   background: var(--mauve);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: bold;
-  transition: background 0.2s ease;
+  padding: .85rem 2rem;
+  font-size: 1rem;
 }
-.btn.favorites-btn:hover {
-  background: var(--slate);
+
+/* responsive tweaks */
+@media (max-width: 768px) {
+  .nav-dropdowns { display: none; }
+  .hero-inner h1 { font-size: 2.5rem; }
 }
