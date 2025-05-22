@@ -6,7 +6,6 @@
   --charcoal:   #333333;
 }
 
-/* Reset & base */
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
   font-family: 'Lora', serif;
@@ -14,7 +13,6 @@ body {
   color: var(--charcoal);
 }
 
-/* —— HEADER NAV —— */
 .site-header {
   background: var(--ivory);
   border-bottom: 1px solid var(--slate);
@@ -32,7 +30,6 @@ body {
   height: 48px;
 }
 
-/* Dropdowns */
 .nav-dropdowns {
   display: flex;
   gap: 2rem;
@@ -52,7 +49,6 @@ body {
   min-width: 160px;
 }
 
-/* right-side icons */
 .nav-actions {
   display: flex;
   gap: 1.25rem;
@@ -63,7 +59,6 @@ body {
   filter: brightness(0) saturate(100%) invert(13%) sepia(0%) hue-rotate(182deg) brightness(94%) contrast(86%);
 }
 
-/* Hero */
 .hero-artistic {
   position: relative;
   height: 75vh;
@@ -85,7 +80,6 @@ body {
   opacity: 0.9;
 }
 
-/* Featured Packs */
 .featured-packs {
   max-width: 1100px; margin: 4rem auto; padding: 0 1rem; text-align: center;
 }
@@ -112,18 +106,14 @@ body {
 }
 .play-btn:hover { transform: scale(1.1); }
 
-/* Micro-interactions */
 @keyframes pulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.05);} }
 .btn:hover { animation: pulse .4s ease-in-out; background: var(--slate); }
 
-/* Dropdown arrow rotate */
 .dropbtn::after { content: "▾"; display:inline-block; margin-left:.3em; transition:transform .2s; }
 .dropdown:hover .dropbtn::after { transform:rotate(180deg); }
 
-/* Logo pulse */
 .logo-link:hover img { animation: pulse .6s ease-in-out; }
 
-/* AOS defaults */
 [data-aos] { opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s; }
 [data-aos].aos-animate { opacity: 1; transform: none; }
 .btn.favorites-btn {
@@ -132,8 +122,21 @@ body {
   font-size: 1rem;
 }
 
-/* responsive tweaks */
 @media (max-width: 768px) {
   .nav-dropdowns { display: none; }
   .hero-inner h1 { font-size: 2.5rem; }
+}
+
+.site-footer {
+  background: linear-gradient(90deg, var(--plum), var(--mauve));
+  color: var(--ivory); text-align: center; padding: 2rem;
+  position: relative; overflow: hidden;
+}
+.footer-quill {
+  display: inline-block;
+  transition: transform .3s;
+  cursor: pointer;
+}
+.footer-quill:hover {
+  transform: translateX(5px) rotate(20deg);
 }
