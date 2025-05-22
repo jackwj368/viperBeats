@@ -62,8 +62,14 @@ body {
 .hero-artistic {
   position: relative;
   height: 75vh;
-  background: url("/static/images/shimmy.jpg") center/cover no-repeat;
-  display: flex; align-items: center; justify-content: center;
+  background-color: var(--slate);
+  background-image: url("../images/shimmy.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .hero-overlay {
   position: absolute; inset: 0;
