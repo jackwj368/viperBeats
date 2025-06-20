@@ -5,62 +5,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{% block title %}Quill Audio{% endblock %}</title>
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/aos@2.3.4/dist/aos.css"
-  />
-  <link
-    rel="stylesheet"
-    href="{% static 'css/style.css' %}"
-  >
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
-  <header class="site-header">
-    <nav class="nav">
-      <a href="{% url 'home' %}" class="logo-link">
-        <img
-          src="{% static 'images/quill-wave-transparent.png' %}"
-          alt="Quill Audio logo"
-        >
-      </a>
-      <div class="nav-dropdowns">
-        <div class="dropdown">
-          <button class="dropbtn">Shop by Mood</button>
-          <div class="dropdown-content">
+  <!-- ✅ Wrap everything inside a page-wrapper -->
+  <div class="page-wrapper">
+
+    <header class="site-header">
+      <nav class="nav">
+        <a href="{% url 'home' %}" class="logo-link">
+          <img src="{% static 'images/quill-wave-transparent.png' %}" alt="Quill Audio logo">
+        </a>
+
+        <div class="nav-dropdowns">
+          <div class="dropdown">
+            <button class="dropbtn">Shop by Mood</button>
+            <div class="dropdown-content"></div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">Shop by Genre</button>
+            <div class="dropdown-content"></div>
           </div>
         </div>
-        <div class="dropdown">
-          <button class="dropbtn">Shop by Genre</button>
-          <div class="dropdown-content">
-          </div>
-        </div>
-      </div>
-      <div class="nav-actions">
-        {% if user.is_authenticated %}
-          <form action="{% url 'logout' %}" method="post" style="display:inline;">
-            {% csrf_token %}
+
+        <div class="nav-actions">
+          {% if user.is_authenticated %}
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+              {% csrf_token %}
               <button type="submit" class="icon-btn" style="background:none; border:none; padding:0;">
                 <img src="{% static 'icons/user.svg' %}" alt="Log out">
               </button>
-             </form>
-        {% else %}
+            </form>
+          {% else %}
             <a href="{% url 'signup' %}" class="text-btn">Sign up</a>
             <a href="{% url 'login' %}" class="icon-btn">
-                <img src="{% static 'icons/user.svg' %}" alt="Log in">
+              <img src="{% static 'icons/user.svg' %}" alt="Log in">
             </a>
-        {% endif %}
-        <a href="{% url 'cart' %}" class="icon-btn">
-          <img src="{% static 'icons/cart.svg' %}" alt="Cart">
-        </a>
-      </div>
-    </nav>
-  </header>
-  <main class="content">
-    {% block content %}{% endblock %}
-  </main>
-  <footer class="site-footer" data-aos="fade-up">
-    <p>© {{ now.year }} Quill Audio <span class="footer-quill">✒️</span></p>
-  </footer>
+          {% endif %}
+          <a href="{% url 'cart' %}" class="icon-btn">
+            <img src="{% static 'icons/cart.svg' %}" alt="Cart">
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer" data-aos="fade-up">
+      <p>© {{ now.year }} Quill Audio <span class="footer-quill">✒️</span></p>
+    </footer>
+  </div>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
@@ -68,5 +64,3 @@
   <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
-
-

@@ -1,3 +1,20 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  min-height: 200px;
+}
+
 :root {
   --plum:       #3E2C41;
   --mauve:      #B76E79;
@@ -138,8 +155,8 @@ body {
 
 .site-footer {
   background: linear-gradient(90deg, var(--plum), var(--mauve));
-  color: var(--ivory); text-align: center; padding: 2rem;
-  position: relative; overflow: hidden;
+  color: var(--ivory); text-align: center; padding: 2rem; overflow: hidden;
+/*  position: relative; */
 }
 .footer-quill {
   display: inline-block;
@@ -149,3 +166,6 @@ body {
 .footer-quill:hover {
   transform: translateX(5px) rotate(20deg);
 }
+
+
+
