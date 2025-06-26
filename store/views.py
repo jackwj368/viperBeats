@@ -7,10 +7,23 @@ def home(request):
     products = Product.objects.all()
     return render(request, 'store/home.html', {'products': products})
 
-def favorites(request):
-    # TODO: replace with real query & ordering
-    return render(request, 'store/favorites.html', {
-        # 'beats': beats
+def favorite_list(request):
+    beats = (
+        Product.objects.filter(is_favorite=True)
+        if hasattr(Product, "is_favorite")
+        else Product.objects.all()[:12]
+    )
+    return render(request, "store/beat_list.html", {
+        "page_title": "Shop Favorites",
+        "beats": beats,
+    })
+
+def recent_list(request):
+    order_field = "-created_at" if hasattr(Product, "created_at") else "-id"
+    beats = Product.objects.order_by(order_field)[:20]
+    return render(request, "store/beat_list.html", {
+        "page_title": "Recently Added",
+        "beats": beats,
     })
 
 def shop_by_mood(request, mood):
