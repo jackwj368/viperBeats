@@ -13,26 +13,27 @@
   <div class="page-wrapper">
 
     <header class="site-header">
-      <nav class="nav" style="padding-block: 0.75rem;">
-          <a href="{% url 'home' %}" class="logo-link">
-            <img src="{% static 'images/quill-wave-transparent.png' %}" alt="Quill Audio logo" style="height: 38px;">
-          </a>
-          <div class="nav-links">
-              <a href="{% url 'favorite_list' %}" class="text-btn">Shop Favorites</a>
-              <a href="{% url 'recent_list' %}"   class="text-btn">Recently Added</a>
-              <div class="dropdown">
-                <a href="#" class="text-btn dropdown-toggle" onclick="toggleGenreDropdown(event)">
-                  Shop by Genre ▾
-                </a>
-                <div id="genre-dropdown" class="dropdown-menu">
-                  {% for genre in genre_menu %}
-                    <a href="{% url 'genre_detail' genre.slug %}">{{ genre.name }}</a>
-                  {% endfor %}
-                </div>
+        <nav class="nav">
+          <div class="nav-section nav-left">
+            <a href="{% url 'home' %}" class="logo-link">
+              <img src="{% static 'images/quill-wave-transparent.png' %}" alt="Quill Audio logo" />
+            </a>
+          </div>
+
+          <div class="nav-section nav-center nav-links">
+            <a href="{% url 'favorite_list' %}" class="text-btn">Shop Favorites</a>
+            <a href="{% url 'recent_list' %}" class="text-btn">Recently Added</a>
+            <div class="dropdown">
+              <a href="#" class="text-btn dropdown-toggle">Shop by Genre</a>
+              <div class="dropdown-menu">
+                {% for genre in genre_menu %}
+                  <a href="{% url 'genre_detail' genre.slug %}">{{ genre.name }}</a>
+                {% endfor %}
               </div>
             </div>
+          </div>
 
-          <div class="nav-actions">
+          <div class="nav-section nav-right nav-actions">
             {% if user.is_authenticated %}
               <form action="{% url 'logout' %}" method="post" style="display:inline;">
                 {% csrf_token %}
