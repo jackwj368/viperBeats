@@ -1,171 +1,151 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-.page-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.content {
-  flex: 1;
-  min-height: 200px;
-}
+html, body { height:100%; margin:0; box-sizing:border-box; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-  --plum:       #3E2C41;
-  --mauve:      #B76E79;
-  --slate:      #44546A;
-  --ivory:      #F0EDE5;
-  --charcoal:   #333333;
+  --plum:#3E2C41;
+  --mauve:#B76E79;
+  --slate:#44546A;
+  --ivory:#F0EDE5;
+  --charcoal:#333333;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
 body {
-  font-family: 'Lora', serif;
-  background: var(--ivory);
-  color: var(--charcoal);
+  font-family:'Lora',serif;
+  background:var(--ivory);
+  color:var(--charcoal);
 }
+
+.page-wrapper     { display:flex; flex-direction:column; min-height:100vh; }
+.content          { flex:1; }
 
 .site-header {
-  background: var(--ivory);
-  border-bottom: 1px solid var(--slate);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-.nav {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-.logo-link img {
-  height: 76px;
-  width: auto;
-  display: block;
+  background:var(--ivory);
+  border-bottom:1px solid var(--slate);
+  box-shadow:0 2px 4px rgba(0,0,0,.1);
 }
 
-.nav-dropdowns {
-  display: flex;
-  gap: 2rem;
-  justify-self: center;
-}
-.dropbtn {
-  font-family: 'Lora', serif;
-  font-size: 1rem;
-  color: var(--charcoal);
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-.dropdown-content {
-  top: 100%; left: 0;
-  min-width: 160px;
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  max-width:1200px;
+  width:100%;
+  margin:0 auto;
+  padding:0 .75rem;
+  gap:2rem;
 }
 
-.nav-actions {
-  display: flex;
-  gap: 1.25rem;
-  justify-self: end;
-}
-.icon-btn img {
-  width: 28px;
-  height: 28px;
-  filter: brightness(0) saturate(100%) invert(13%) sepia(0%) hue-rotate(182deg) brightness(94%) contrast(86%);
+.logo-link img   { height:38px; width:auto; display:block; }
+
+.nav-links{
+  display:flex;
+  gap:1.5rem;
+  align-items:center;
+  flex:1;
+  justify-content:center;
 }
 
-.hero-artistic {
-  position: relative;
-  height: 75vh;
-  background-color: var(--slate);
-  background-image: url("../images/shimmy.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.text-btn{
+  font-family:'Lora',serif;
+  font-size:1rem;
+  color:var(--charcoal);
+  text-decoration:none;
+  transition:color .2s;
 }
-.hero-overlay {
-  position: absolute; inset: 0;
-  background: rgba(62,44,65,0.7);
-}
-.hero-inner {
-  position: relative; text-align: center; color: var(--ivory); padding: 2rem;
-}
-.hero-inner h1 {
-  font-size: 4rem; letter-spacing: 1px; margin-bottom: .5rem;
-}
-.hero-inner .subhead {
-  font-family: 'Special Elite', monospace; font-size: 1.3rem; margin-bottom: 1.5rem;
-  opacity: 0.9;
+.text-btn:hover{ color:var(--mauve); }
+
+/* icons */
+.nav-actions      { display:flex; gap:1.25rem; }
+.icon-btn img{
+  width:28px; height:28px;
+  filter:brightness(0) saturate(100%) invert(13%) sepia(0%)
+          hue-rotate(182deg) brightness(94%) contrast(86%);
 }
 
-.featured-packs {
-  max-width: 1100px; margin: 4rem auto; padding: 0 1rem; text-align: center;
+.dropdown         { position:relative; }
+.dropdown-toggle::after{ content:" ▾"; }
+
+.dropdown-menu{
+  position:absolute;
+  top:calc(100% + .4rem);
+  left:0;
+  min-width:12rem;
+  background:var(--ivory);
+  border:1px solid var(--slate);
+  box-shadow:0 6px 12px rgba(0,0,0,.05);
+  padding:.5rem 0;
+  display:none;
+  z-index:1000;
 }
-.featured-packs h2 {
-  font-size: 2rem; color: var(--plum); margin-bottom: 2rem;
+.dropdown-menu a{
+  display:block;
+  padding:.35rem 1rem;
+  text-decoration:none;
+  color:var(--charcoal);
 }
-.packs-grid {
-  display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
-  gap: 2rem;
+.dropdown-menu a:hover{
+  background:var(--mauve);
+  color:#fff;
 }
-.pack-card {
-  background: var(--ivory); border: 1px solid var(--slate); border-radius: 8px;
-  padding: 1rem; position: relative; overflow: hidden;
-  transition: transform .2s ease;
+
+.hero-artistic{
+  position:relative; height:75vh;
+  background:var(--slate) url("../images/shimmy.jpg") center/cover no-repeat;
+  display:flex; align-items:center; justify-content:center;
 }
-.pack-card:hover { transform: translateY(-5px); }
-.pack-card img { width: 100%; border-radius: 4px; }
-.pack-card h3 { margin: .75rem 0; font-family: 'Lora', serif; }
-.play-btn {
-  background: var(--mauve); color: white; border: none; border-radius: 50%;
-  width: 40px; height: 40px; font-size: 1.1rem; cursor: pointer;
-  position: absolute; bottom: 1rem; right: 1rem;
-  transition: transform .2s ease;
+.hero-overlay{ position:absolute; inset:0; background:rgba(62,44,65,.7); }
+.hero-inner{
+  position:relative; text-align:center; color:var(--ivory); padding:2rem;
 }
-.play-btn:hover { transform: scale(1.1); }
+.hero-inner h1      { font-size:4rem; letter-spacing:1px; margin-bottom:.5rem; }
+.hero-inner .subhead{
+  font-family:'Special Elite',monospace; font-size:1.3rem;
+  margin-bottom:1.5rem; opacity:.9;
+}
+
+.featured-packs{ max-width:1100px; margin:4rem auto; padding:0 1rem; text-align:center; }
+.featured-packs h2{ font-size:2rem; color:var(--plum); margin-bottom:2rem; }
+.packs-grid{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:2rem;
+}
+.pack-card{
+  background:var(--ivory); border:1px solid var(--slate); border-radius:8px;
+  padding:1rem; position:relative; overflow:hidden; transition:transform .2s;
+}
+.pack-card:hover   { transform:translateY(-5px); }
+.pack-card img     { width:100%; border-radius:4px; }
+.pack-card h3      { margin:.75rem 0; font-family:'Lora',serif; }
+.play-btn{
+  background:var(--mauve); color:#fff; border:none; border-radius:50%;
+  width:40px; height:40px; font-size:1.1rem; cursor:pointer;
+  position:absolute; bottom:1rem; right:1rem; transition:transform .2s;
+}
+.play-btn:hover    { transform:scale(1.1); }
 
 @keyframes pulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.05);} }
-.btn:hover { animation: pulse .4s ease-in-out; background: var(--slate); }
+.btn:hover        { animation:pulse .4s ease-in-out; background:var(--slate); }
+.logo-link:hover img{ animation:pulse .6s ease-in-out; }
 
-.dropbtn::after { content: "▾"; display:inline-block; margin-left:.3em; transition:transform .2s; }
-.dropdown:hover .dropbtn::after { transform:rotate(180deg); }
+[data-aos]{ opacity:0; transform:translateY(20px); transition:opacity .6s,transform .6s; }
+[data-aos].aos-animate{ opacity:1; transform:none; }
 
-.logo-link:hover img { animation: pulse .6s ease-in-out; }
-
-[data-aos] { opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s; }
-[data-aos].aos-animate { opacity: 1; transform: none; }
-.btn.favorites-btn {
-  background: var(--mauve);
-  padding: .85rem 2rem;
-  font-size: 1rem;
+.btn.favorites-btn{
+  background:var(--mauve);
+  padding:.85rem 2rem;
+  font-size:1rem;
 }
 
-@media (max-width: 768px) {
-  .nav-dropdowns { display: none; }
-  .hero-inner h1 { font-size: 2.5rem; }
+@media (max-width:768px){
+  .nav-links{ gap:1rem; }
+  .hero-inner h1{ font-size:2.5rem; }
 }
 
-.site-footer {
-  background: linear-gradient(90deg, var(--plum), var(--mauve));
-  color: var(--ivory); text-align: center; padding: 2rem; overflow: hidden;
-/*  position: relative; */
+.site-footer{
+  background:linear-gradient(90deg,var(--plum),var(--mauve));
+  color:var(--ivory); text-align:center; padding:2rem; overflow:hidden;
 }
-.footer-quill {
-  display: inline-block;
-  transition: transform .3s;
-  cursor: pointer;
+.footer-quill{
+  display:inline-block; transition:transform .3s; cursor:pointer;
 }
-.footer-quill:hover {
-  transform: translateX(5px) rotate(20deg);
-}
-
-
+.footer-quill:hover{ transform:translateX(5px) rotate(20deg); }
 
