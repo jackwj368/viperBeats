@@ -18,15 +18,19 @@
             <img src="{% static 'images/quill-wave-transparent.png' %}" alt="Quill Audio logo" style="height: 38px;">
           </a>
           <div class="nav-links">
-            <a href="{% url 'favorite_list' %}" class="text-btn">Shop Favorites</a>
-            <a href="{% url 'recent_list' %}" class="text-btn">Recently Added</a>
-            <a href="#" class="text-btn dropdown-toggle" onclick="toggleGenreDropdown()">Shop by Genre</a>
-            <div id="genre-dropdown" class="dropdown-content" style="display: none;">
-              {% for genre in genre_menu %}
-                <a href="{% url 'music:genre_detail' genre.slug %}">{{ genre.name }}</a>
-              {% endfor %}
+              <a href="{% url 'favorite_list' %}" class="text-btn">Shop Favorites</a>
+              <a href="{% url 'recent_list' %}"   class="text-btn">Recently Added</a>
+              <div class="dropdown">
+                <a href="#" class="text-btn dropdown-toggle" onclick="toggleGenreDropdown(event)">
+                  Shop by Genre ▾
+                </a>
+                <div id="genre-dropdown" class="dropdown-menu">
+                  {% for genre in genre_menu %}
+                    <a href="{% url 'genre_detail' genre.slug %}">{{ genre.name }}</a>
+                  {% endfor %}
+                </div>
+              </div>
             </div>
-          </div>
 
           <div class="nav-actions">
             {% if user.is_authenticated %}
@@ -65,6 +69,12 @@
     const dropdown = document.getElementById("genre-dropdown");
     dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
   }
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropdown')) {
+      document.getElementById('genre-dropdown').style.display = 'none';
+    }
+  });
 </script>
 </body>
 </html>
